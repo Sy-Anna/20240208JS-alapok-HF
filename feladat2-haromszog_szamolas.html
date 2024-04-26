@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Háromszög számítás</title>
+</head>
+<body>
+
+    <input id="inputA" type="number" placeholder="'a'-oldal">
+    <input id="inputB" type="number" placeholder="'b'-oldal">
+    <input id="inputC" type="number" placeholder="'c'-oldal">
+    <button id="btnSend">Küldés</button>
+    <p id="kerulet">Kerület: </p>
+    <p id="terulet">Terület: </p>
+    
+    <script>
+
+        const aOldal = document.getElementById("inputA");
+        const bOldal = document.getElementById("inputB");
+        const cOldal = document.getElementById("inputC");
+        const btnSend = document.getElementById("btnSend");
+        const k = document.getElementById("kerulet");
+        const t = document.getElementById("terulet");
+
+        btnSend.addEventListener("click", () => {
+            const a = parseInt(aOldal.value);
+            const b = parseInt(bOldal.value);
+            const c = parseInt(cOldal.value);
+            const s = (a+b+c)/2
+            console.log(a);
+            console.log(b);
+            console.log(c);
+            console.log(s);
+            k.textContent = "kerület: " + (a+b+c);
+            t.textContent = "Terület: " + (Math.sqrt(s*(s-a)*(s-b)*(s-c)));
+        })
+
+    </script>
+
+</body>
+</html>

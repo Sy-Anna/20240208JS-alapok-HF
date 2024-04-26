@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gondoltam egy számra</title>
+</head>
+<body>
+
+    <p>Tippelj egy  számra 1 és 100 között!</p>
+    <input type="number" id="numberInput" placeholder="Tipp: ">
+    <button id="btnSend">Küldés</button>
+    <p id="msgOutput"></p>
+    <button id="btnNewGame" >Új szám generálása</button>
+
+    <script>
+
+        function randomInt(max) {
+            return Math.floor(Math.random() * max) + 1;
+        }
+
+        const numInput = document.getElementById("numberInput");
+        const message = document.getElementById("msgOutput");
+        const megoldas = randomInt(100);
+        const btnSend = document.getElementById("btnSend");
+        const btnNewGame = document.getElementById("btnNewGame");
+        console.log(megoldas);
+
+        
+
+        btnSend.addEventListener('click', () => {
+            const tipp = parseInt(numInput.value);
+            console.log(tipp);
+            if (tipp > 100 || tipp < 1) {
+                message.textContent = "Nem megfelelő számot adtál meg!";
+            } else if (tipp == megoldas) {
+                message.textContent = "Gratulálok, megfejtetted!";
+            } else if (tipp != megoldas) {
+                if (tipp < megoldas) {
+                    message.textContent = "A megoldás nagyobb, mint az általad beírt szám!";
+                } else if (tipp > megoldas) {
+                    message.textContent = "A megoldás kisebb, mint az általad beírt szám!";
+                }
+            }
+        })
+
+        btnNewGame.addEventListener('click', () => {
+            const megoldas = randomInt(100);
+            console.log(megoldas)
+            message.textContent = "";
+        })
+
+    </script>
+    
+</body>
+</html>
